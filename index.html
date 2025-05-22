@@ -98,7 +98,7 @@
         </section>
 
         <!-- Experience -->
-        <section class="wrapper style1">
+        <!-- <section class="wrapper style1">
             <div class="inner">
                 <h2 class="major">Professional Experience</h2>
                 <div>
@@ -118,7 +118,7 @@
                     </ul>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Skills and Tech Stack -->
         <section class="wrapper alt style1">
@@ -166,7 +166,39 @@
                 </ul>
             </div>
         </section>
-
+        <div id="avatar-widget" style="position:fixed; bottom:20px; right:20px; z-index:9999; text-align:center;">
+            <button onclick="toggleAvatarPopup()" style="background-color:#2a2a2a; color:#fff; text-align: center;">
+              👾 Want to see your name avatar?
+            </button>
+          
+            <div id="avatarPopup" style="display:none; margin-top:10px; background:#fff; padding:15px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); width:350px;">
+                <label for="avatarNameInput" style="font-size:14px; color:#000000; font-weight:bold; margin-bottom:5px; display:block;">Type your name:</label>
+                <input   type="text"
+              id="avatarNameInput"
+              placeholder="Type your name to see your funny avatar!"
+              style="width:100%; padding:8px; margin-bottom:10px; font-size:14px; background-color:#f4f4f4; color:#000000; border:1px solid #ccc;"
+              >
+              <button onclick="generateFunnyAvatar()" style="width:100%; background-color:#3498db; color:white; border:none; border-radius:5px; font-size:14px; text-align: center;">Generate Avatar</button>
+              <div id="avatarImageContainer" style="margin-top:10px; text-align:center;"></div>
+            </div>
+          </div>
+          
+          <script>
+            function toggleAvatarPopup() {
+              const popup = document.getElementById("avatarPopup");
+              popup.style.display = popup.style.display === "none" ? "block" : "none";
+            }
+          
+            function generateFunnyAvatar() {
+              const name = document.getElementById("avatarNameInput").value.trim();
+              if (!name) {
+                alert("Please enter a name!");
+                return;
+              }
+              const imgUrl = `https://robohash.org/${encodeURIComponent(name)}?set=set2&size=200x200`;
+              document.getElementById("avatarImageContainer").innerHTML = `<img src="${imgUrl}" alt="Avatar for ${name}" style="margin-top:10px; width:150px; height:150px;">`;
+            }
+          </script>  
     </div>
 
     <!-- Scripts -->
